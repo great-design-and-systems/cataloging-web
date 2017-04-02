@@ -16,7 +16,7 @@ class AppRoute extends React.Component {
   }
   renderLoadedContent() {
     return (<BrowserRouter>
-      <Route path="/" component={AppRoutes.App.content}></Route>
+      <Route path={AppRoutes.App.content.path} component={AppRoutes.App.content.component}></Route>
     </BrowserRouter>)
   }
   render() {

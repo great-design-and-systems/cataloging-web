@@ -1,9 +1,12 @@
+import '../node_modules/material-design-lite/material';
+
 import { AppContainer } from 'react-hot-loader';
 import AppRoute from './components/Route';
 import { Provider } from 'react-redux';
 import React from 'react';
 import ReactDOM from 'react-dom';
 import configureStore from './stores';
+
 const store = configureStore();
 
 ReactDOM.render(

@@ -1,9 +1,8 @@
 import './app.css';
 import '../../styles/index.scss';
-import '../../../node_modules/material-design-lite/material';
 
 import AppContent from './AppContent';
-import AppDrawer from './AppDrawer';
+import AppDrawer from '../drawer/Drawer';
 import AppHeader from './AppHeader';
 import React from 'react';
 

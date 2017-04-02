@@ -1,7 +1,8 @@
 import App from '../containers/App';
 
 const AppRouter = {
-    content: App
+    hideFromDrawer: true,
+    content: { path: '/', component: App }
 };
 
 export default AppRouter;
