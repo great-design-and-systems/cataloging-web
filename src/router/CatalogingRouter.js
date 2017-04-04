@@ -1,15 +1,18 @@
+import FA from 'react-fontawesome';
+import React from 'react';
+
 const Router = {
     id: 'catalogingRoot',
     content: {
         path: '/cataloging',
         label: 'Cataloging',
-        icon: 'archive',
+        icon: <FA name="archive" />,
         children: [
             {
                 id: 'newEntry',
                 content: {
                     path: '/new-entry',
-                    icon: 'file',
+                    icon: <FA name="file" />,
                     label: 'New entry'
                 }
             },
@@ -17,7 +20,7 @@ const Router = {
                 id: 'onlineSearch',
                 content: {
                     path: '/online-search',
-                    icon: 'book',
+                    icon: <FA name="book" />,
                     label: 'Online Search'
                 }
             }]

@@ -5,7 +5,6 @@ import React from 'react';
 
 class AppHeader extends React.Component {
     toggleDrawer(){
-        console.log('toggled');
         this.props.actions.DrawerToggle();
     }
     render() {
