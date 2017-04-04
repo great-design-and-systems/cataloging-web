@@ -6,7 +6,7 @@
 
 import { DRAWER_TOGGLE } from '../actions/const';
 
-const initialState = {};
+const initialState = { toggle: false };
 
 function reducer(state = initialState, action) {
   /* Keep the reducer clean - do not mutate the original state. */

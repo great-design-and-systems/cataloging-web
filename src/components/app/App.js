@@ -8,11 +8,9 @@ import React from 'react';
 
 class AppComponent extends React.Component {
   render() {
-    return (<div className="mdl-layout mdl-js-layout">
+    return (<div>
       <AppHeader {...this.props} />
-      <AppDrawer {...this.props} />
-      <AppContent {...this.props} />
-    </div>)
+      <AppDrawer {...this.props} /></div>)
   }
 }
 

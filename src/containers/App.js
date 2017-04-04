@@ -18,7 +18,7 @@ import React, {
   PropTypes,
 } from 'react';
 
-import Main from '../components/App';
+import Main from '../components/app/App';
 import { bindActionCreators } from 'redux';
 import { connect } from 'react-redux';
 
