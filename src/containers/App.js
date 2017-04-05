@@ -12,6 +12,7 @@ import {
   ApiRemove,
   ApiSave,
   DrawerToggle,
+  RouterGoTo
 } from '../actions/';
 import React, {
   Component,
@@ -41,17 +42,20 @@ App.propTypes = {
     ApiQuery: PropTypes.func.isRequired,
     ApiRemove: PropTypes.func.isRequired,
     ApiSave: PropTypes.func.isRequired,
-    DrawerToggle: PropTypes.func.isRequired
+    DrawerToggle: ProtoTypes.func.isRequired,
+    RouterGoTo: PropTypes.func.isRequired
   }),
   Drawer: PropTypes.shape({}),
-  ApiService: PropTypes.shape({})
+  ApiService: PropTypes.shape({}),
+  Router: ProtoTypes.shape({})
 };
 function mapStateToProps(state) {
   // eslint-disable-line no-unused-vars
   /* Populated by react-webpack-redux:reducer */
   const props = {
     Drawer: state.Drawer,
-    ApiService: state.ApiService
+    ApiService: state.ApiService,
+    Router: state.Router
   };
   return props;
 }
@@ -63,7 +67,8 @@ function mapDispatchToProps(dispatch) {
     ApiQuery,
     ApiRemove,
     ApiSave,
-    DrawerToggle
+    DrawerToggle,
+    RouterGoTo
   };
   const actionMap = { actions: bindActionCreators(actions, dispatch) };
   return actionMap;

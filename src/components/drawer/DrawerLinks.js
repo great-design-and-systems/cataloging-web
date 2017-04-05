@@ -41,14 +41,14 @@ class RenderLinks {
                         parentProps.subRoutes = subResults;
                     }, [], parent, index);
                     result.push(
-                        <DrawerLink {...parentProps} />
+                        <DrawerLink key={route.id} {...parentProps} />
                     );
                 } else {
                     result.push(
                         <DrawerLink key={route.id} route={route} parent={parent} />
                     );
                     result.push(
-                        <Divider />
+                        <Divider  key={'divider_' + route.id}/>
                     )
                 }
             }

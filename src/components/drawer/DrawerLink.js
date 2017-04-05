@@ -1,16 +1,21 @@
 import { List, ListItem } from 'material-ui/List';
 
 import React from 'react';
-import { cyan100 } from 'material-ui/styles/colors';
+import { cyan100, grey700 } from 'material-ui/styles/colors';
 
 const DrawerLink = (inheritedProps) => {
     const route = inheritedProps.route;
     const props = {};
+    const handleClick = ()=> {
+      if(route.path){
+        inheritedProps.actions.RouterGoTo(route.path);
+      }
+    }
     let link;
     if (inheritedProps.hasChildren) {
         let toggled = false;
-        link = (<List>
-            <ListItem style={{ backgroundColor: cyan100 }} disabled={true} leftIcon={route.content.icon}>{route.content.label}</ListItem>
+        link = (<List style={{ padding: 0 }}>
+            <ListItem style={{ backgroundColor: cyan100, color: grey700 }} disabled={true} leftIcon={route.content.icon}>{route.content.label}</ListItem>
             {inheritedProps.subRoutes}
         </List>);
     } else {
@@ -18,7 +23,7 @@ const DrawerLink = (inheritedProps) => {
         props.style = {
             borderBottomColor: cyan100
         }
-        link = <ListItem  {...props}>{route.content.label}</ListItem>
+        link = <ListItem onClick={handleClick} {...props}>{route.content.label}</ListItem>
     }
     return link;
 }
