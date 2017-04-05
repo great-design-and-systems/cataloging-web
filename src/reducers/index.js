@@ -10,12 +10,16 @@
 /* Populated by react-webpack-redux:reducer */
 import ApiService from './ApiService';
 import Drawer from './Drawer';
+import NewEntry from './NewEntry';
 import Router from './Router';
 import { combineReducers } from 'redux';
+import { reducer as form } from 'redux-form'
 const reducers = {
   Drawer,
   ApiService,
-  Router
+  Router,
+  NewEntry,
+  form
 };
 const combined = combineReducers(reducers);
 module.exports = combined;

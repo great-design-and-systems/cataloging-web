@@ -26,8 +26,8 @@ import { connect } from 'react-redux';
 /* Populated by react-webpack-redux:reducer */
 class App extends Component {
   render() {
-    const {actions, Drawer, ApiService} = this.props;
-    return <Main actions={actions} Drawer={Drawer} ApiService={ApiService}/>;
+    const { actions, Drawer, ApiService } = this.props;
+    return <Main actions={actions} Drawer={Drawer} ApiService={ApiService} />;
   }
 }
 /* Populated by react-webpack-redux:reducer
@@ -47,7 +47,9 @@ App.propTypes = {
   }),
   Drawer: PropTypes.shape({}),
   ApiService: PropTypes.shape({}),
-  Router: PropTypes.shape({})
+  Router: PropTypes.shape({}),
+  NewEntry: PropTypes.shape({}),
+  form: PropTypes.shape({})
 };
 function mapStateToProps(state) {
   // eslint-disable-line no-unused-vars
@@ -55,7 +57,9 @@ function mapStateToProps(state) {
   const props = {
     Drawer: state.Drawer,
     ApiService: state.ApiService,
-    Router: state.Router
+    Router: state.Router,
+    NewEntry: state.NewEntry,
+    form: state.form
   };
   return props;
 }

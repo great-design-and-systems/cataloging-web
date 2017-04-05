@@ -7,7 +7,6 @@
 import {
   ROUTER_GO_TO,
 } from '../actions/const';
-import React from 'react';
 import createHistory from 'history/createBrowserHistory';
 
 const initialState = {
