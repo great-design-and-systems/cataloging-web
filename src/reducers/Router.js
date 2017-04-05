@@ -5,22 +5,23 @@
  */
 
 import {
-  ROUTER_GO_TO
+  ROUTER_GO_TO,
 } from '../actions/const';
-import {
-  browserHistory
-} from 'react-router';
 import React from 'react';
-const initialState = {};
+import createHistory from 'history/createBrowserHistory';
 
+const initialState = {
+  history: createHistory()
+};
 function reducer(state = initialState, action) {
   /* Keep the reducer clean - do not mutate the original state. */
   // const nextState = Object.assign({}, state);
 
   switch (action.type) {
     case ROUTER_GO_TO:
-      browserHistory.push(action.payload);
-      break;
+      console.log('browser', state.history);
+      state.history.push(action.payload.path, action.payload.params || {});
+      return state;
     default:
       {
         /* Return original state if no actions were consumed. */

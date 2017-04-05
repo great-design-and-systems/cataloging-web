@@ -1,15 +1,15 @@
 import { List, ListItem } from 'material-ui/List';
+import { cyan100, grey700 } from 'material-ui/styles/colors';
 
 import React from 'react';
-import { cyan100, grey700 } from 'material-ui/styles/colors';
 
 const DrawerLink = (inheritedProps) => {
     const route = inheritedProps.route;
     const props = {};
-    const handleClick = ()=> {
-      if(route.path){
-        inheritedProps.actions.RouterGoTo(route.path);
-      }
+    const handleClick = () => {
+        if (inheritedProps.onClick) {
+            inheritedProps.onClick(route.content.path);
+        }
     }
     let link;
     if (inheritedProps.hasChildren) {

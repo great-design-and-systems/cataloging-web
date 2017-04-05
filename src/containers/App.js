@@ -12,7 +12,7 @@ import {
   ApiRemove,
   ApiSave,
   DrawerToggle,
-  RouterGoTo
+  RouterGoTo,
 } from '../actions/';
 import React, {
   Component,
@@ -42,12 +42,12 @@ App.propTypes = {
     ApiQuery: PropTypes.func.isRequired,
     ApiRemove: PropTypes.func.isRequired,
     ApiSave: PropTypes.func.isRequired,
-    DrawerToggle: ProtoTypes.func.isRequired,
+    DrawerToggle: PropTypes.func.isRequired,
     RouterGoTo: PropTypes.func.isRequired
   }),
   Drawer: PropTypes.shape({}),
   ApiService: PropTypes.shape({}),
-  Router: ProtoTypes.shape({})
+  Router: PropTypes.shape({})
 };
 function mapStateToProps(state) {
   // eslint-disable-line no-unused-vars

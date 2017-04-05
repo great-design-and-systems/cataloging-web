@@ -10,7 +10,7 @@ import lodash from 'lodash';
 
 const DrawerLinks = (props) => {
     let links = [];
-    new RenderLinks(lodash.values(props.routes), (results) => {
+    new RenderLinks(props).getLinks(lodash.values(props.routes), (results) => {
         links = results;
     });
     return (<List style={{ padding: 0 }}>
@@ -19,7 +19,13 @@ const DrawerLinks = (props) => {
     </List>)
 }
 class RenderLinks {
-    constructor(routes, done, result, parent, index) {
+    constructor(props) {
+        this.props = props;
+    }
+    handleOnClick(path) {
+        this.props.actions.RouterGoTo(path);
+    }
+    getLinks(routes, done, result, parent, index) {
         if (!index) {
             index = 0;
         }
@@ -37,7 +43,7 @@ class RenderLinks {
                         hasChildren: true,
                         route: route
                     };
-                    new RenderLinks(route.content.children, (subResults) => {
+                    new RenderLinks(this.props).getLinks(route.content.children, (subResults) => {
                         parentProps.subRoutes = subResults;
                     }, [], parent, index);
                     result.push(
@@ -45,15 +51,15 @@ class RenderLinks {
                     );
                 } else {
                     result.push(
-                        <DrawerLink key={route.id} route={route} parent={parent} />
+                        <DrawerLink onClick={this.handleOnClick.bind(this)} key={route.id} route={route} parent={parent} />
                     );
                     result.push(
-                        <Divider  key={'divider_' + route.id}/>
+                        <Divider key={'divider_' + route.id} />
                     )
                 }
             }
             index++;
-            new RenderLinks(routes, done, result, parent, index);
+            new RenderLinks(this.props).getLinks(routes, done, result, parent, index);
         } else {
             done(result);
         }
