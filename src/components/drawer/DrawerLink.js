@@ -8,7 +8,11 @@ const DrawerLink = (inheritedProps) => {
     const props = {};
     const handleClick = () => {
         if (inheritedProps.onClick) {
-            inheritedProps.onClick(route.content.path);
+            let path = route.content.path;
+            if(inheritedProps.parent){
+                path = inheritedProps.parent.content.path + route.content.path;
+            }
+            inheritedProps.onClick(path);
         }
     }
     let link;

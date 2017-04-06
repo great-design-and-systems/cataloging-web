@@ -2,7 +2,8 @@ import React from 'react';
 
 const AppContent = (props) => {
     return (
-        <div className="mdl-layout__content">
+        <div>
+            {props.content}
         </div>
     );
 }

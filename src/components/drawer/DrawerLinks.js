@@ -45,7 +45,7 @@ class RenderLinks {
                     };
                     new RenderLinks(this.props).getLinks(route.content.children, (subResults) => {
                         parentProps.subRoutes = subResults;
-                    }, [], parent, index);
+                    }, [], route, index);
                     result.push(
                         <DrawerLink key={route.id} {...parentProps} />
                     );

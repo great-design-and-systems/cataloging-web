@@ -10,7 +10,9 @@ class AppComponent extends React.Component {
   render() {
     return (<div>
       <AppHeader {...this.props} />
-      <AppDrawer {...this.props} /></div>)
+      <AppDrawer {...this.props} />
+      <AppContent {...this.props} />
+    </div>)
   }
 }
 
