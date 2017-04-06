@@ -1,18 +1,20 @@
 import './app.css';
-import '../../styles/index.scss';
 
 import AppContent from './AppContent';
 import AppDrawer from '../drawer/Drawer';
 import AppHeader from './AppHeader';
+import { BrowserRouter } from 'react-router-dom';
 import React from 'react';
 
 class AppComponent extends React.Component {
   render() {
-    return (<div>
-      <AppHeader {...this.props} />
-      <AppDrawer {...this.props} />
-      <AppContent {...this.props} />
-    </div>)
+    return (<BrowserRouter>
+      <div>
+        <AppHeader {...this.props} />
+        <AppDrawer {...this.props} />
+        <AppContent {...this.props} />
+      </div>
+    </BrowserRouter>)
   }
 }
 

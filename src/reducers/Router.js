@@ -18,7 +18,6 @@ function reducer(state = initialState, action) {
 
   switch (action.type) {
     case ROUTER_GO_TO:
-      console.log('browser', state.history);
       state.history.push(action.payload.path, action.payload.params || {});
       return state;
     default:

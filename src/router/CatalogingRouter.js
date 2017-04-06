@@ -10,14 +10,14 @@ const Router = {
         path: '/cataloging',
         label: 'Cataloging',
         icon: <FA name="archive" />,
-        component: Cataloging,
         children: [
             {
                 id: 'newEntry',
                 content: {
                     path: '/new-entry',
                     icon: <FA name="file" />,
-                    label: 'New entry'
+                    label: 'New entry',
+                    component: NewEntry
                 }
             },
             {
@@ -25,7 +25,8 @@ const Router = {
                 content: {
                     path: '/online-search',
                     icon: <FA name="book" />,
-                    label: 'Online Search'
+                    label: 'Online Search',
+                    component: OnlineSearch
                 }
             }]
     }

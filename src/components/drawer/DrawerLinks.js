@@ -24,6 +24,7 @@ class RenderLinks {
     }
     handleOnClick(path) {
         this.props.actions.RouterGoTo(path);
+        this.props.actions.DrawerToggle();
     }
     getLinks(routes, done, result, parent, index) {
         if (!index) {
