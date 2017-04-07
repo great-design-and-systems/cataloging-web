@@ -16,7 +16,7 @@ const DrawerLink = (inheritedProps) => {
         }
     }
     let link;
-    if (inheritedProps.hasChildren) {
+    if (inheritedProps.hasChildren) { 
         let toggled = false;
         link = (<List style={{ padding: 0 }}>
             <ListItem style={{ backgroundColor: cyan100, color: grey700 }} disabled={true} leftIcon={route.content.icon}>{route.content.label}</ListItem>

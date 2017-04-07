@@ -4,7 +4,7 @@ import ApiQuery from '../actions/api/ApiQuery.js';
 import ApiRemove from '../actions/api/ApiRemove.js';
 import ApiSave from '../actions/api/ApiSave.js';
 import DrawerToggle from '../actions/drawer/DrawerToggle.js';
-import RouterGoTo from '../actions/router/RouterGoTo.js';
+import { push as RouterPush } from 'react-router-redux';
 
 const actions = {
   ApiClear,
@@ -13,6 +13,6 @@ const actions = {
   ApiRemove,
   ApiSave,
   DrawerToggle,
-  RouterGoTo
+  RouterPush
 };
 module.exports = actions;

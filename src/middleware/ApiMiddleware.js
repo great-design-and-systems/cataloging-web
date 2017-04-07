@@ -1,64 +1,53 @@
 import { Api } from '../services/ApiService';
 import lodash from 'lodash';
 
-const initialState = {
-    error: null
-};
-
-const DEFAULT_STATE = {
-    error: null,
-    pending: false
-};
-
-const ApiServiceReducer = (state = DEFAULT_STATE, action) => {
-    let domainState;
-    const api = new Api();
-    state = { ...state };
-    if (action.payload && action.payload.domain) {
-        const domain = action.payload.domain.replace(/\s/, '_');
-        const executable = { ...initialState };
-        domainState = {};
-        lodash.set(domainState, action.payload.executable, executable);
-        lodash.set(state, domain, domainState);
-    }
-    if (domainState) {
-        const executableState = lodash.get(domainState, action.payload.executable);
-        if (executableState) {
-            if (action.type.indexOf('_PENDING') > -1) {
-                const newState = { ...initialState, pending: true };
-                state.pending = true;
-                lodash.set(domainState, action.payload.executable, newState);
-            }
-            else if (action.type.indexOf('_FULFILLED') > -1) {
-                const newState = {
-                    ...initialState, done: true,
-                    data: action.payload.result
-                };
-                state.pending = false;
-                state.error = null;
-                lodash.set(domainState, action.payload.executable, newState);
-            }
-            else if (action.type.indexOf('_REJECTED') > -1) {
-                const newState = {
-                    ...initialState, done: true,
-                    error: action.payload
-                };
-                if (!state.error) {
-                    state.error = {};
+const ApiMiddleware = (store) => (next) => (action) => {
+    if (/{(.+)\.(.+)}/.test(action.type)) {
+        let executable = action.type.replace('{', '').replace('}', '');
+        const link = executable.split('.');
+        const api = new Api();
+        const domain = lodash.get(api, link[0]);
+        const actionLink = lodash.get(domain, link[1]);
+        if (actionLink) {
+            store.dispatch({
+                type: executable + '_PENDING',
+                payload: {
+                    domain: link[0],
+                    executable: link[1]
                 }
-                const errorExec = {};
-                state.pending = false;
-                lodash.set(errorExec, action.payload.executable, { invalid: true, message: action.payload.error.message });
-                lodash.set(state.error, action.payload.domain, errorExec);
-                lodash.set(domainState, action.payload.executable, newState);
-            }
+            });
+            actionLink.execute(action.payload, (err, result) => {
+                if (err) {
+                    store.dispatch({
+                        type: executable + '_REJECTED',
+                        payload: {
+                            domain: link[0],
+                            executable: link[1],
+                            error: err
+                        }
+                    });
+                } else {
+                    store.dispatch({
+                        type: executable + '_FULFILLED',
+                        payload: {
+                            domain: link[0],
+                            executable: link[1],
+                            result: result
+                        }
+                    });
+                }
+                next(action);
+            });
+        }
+        else {
+            next(action);
         }
 
-    } else if (action.type.indexOf('_CLEAR_API') > -1) {
-        let domainActionContent = action.type.replace('_CLEAR_API', '');
-        lodash.unset(state, domainActionContent)
+    } else {
+        next(action);
     }
-    return state;
+
+
 };
 
-export default ApiServiceReducer;
+export default ApiMiddleware;

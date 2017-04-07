@@ -8,18 +8,20 @@
  *          you edit them, they are not updated again.
  */
 /* Populated by react-webpack-redux:reducer */
+
 import ApiService from './ApiService';
 import Drawer from './Drawer';
 import NewEntry from './NewEntry';
-import Router from './Router';
 import { combineReducers } from 'redux';
 import { reducer as form } from 'redux-form'
+import {routerReducer as routing} from 'react-router-redux';
+
 const reducers = {
   Drawer,
   ApiService,
-  Router,
+  routing,
   NewEntry,
   form
 };
 const combined = combineReducers(reducers);
-module.exports = combined;
+export default combined;

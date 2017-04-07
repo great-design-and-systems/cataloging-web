@@ -1,9 +1,9 @@
+import AppMiddleware from '../middleware';
 import { createStore } from 'redux';
-import middleware from '../middleware';
 import reducers from '../reducers';
+
 function reduxStore(initialState) {
-  const store = createStore(reducers, initialState,
-    window.devToolsExtension && window.devToolsExtension(), middleware);
+  const store = createStore(reducers, initialState, AppMiddleware);
 
   if (module.hot) {
     // Enable Webpack hot module replacement for reducers
