@@ -7,14 +7,15 @@ import React from 'react';
 const Router = {
     id: 'catalogingRoot',
     content: {
-        path: '/cataloging',
+        path: 'cataloging',
         label: 'Cataloging',
         icon: <FA name="archive" />,
+        component: Cataloging,
         children: [
             {
                 id: 'newEntry',
                 content: {
-                    path: '/new-entry',
+                    path: 'new-entry',
                     icon: <FA name="file" />,
                     label: 'New entry',
                     component: NewEntry
@@ -23,7 +24,7 @@ const Router = {
             {
                 id: 'onlineSearch',
                 content: {
-                    path: '/online-search',
+                    path: 'online-search',
                     icon: <FA name="book" />,
                     label: 'Online Search',
                     component: OnlineSearch

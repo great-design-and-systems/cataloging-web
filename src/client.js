@@ -23,8 +23,8 @@ const Routes = (props) => {
     <Router history={history}>
       <Route path="/" component={props.root}>
         <Route path={AppRoutes.Cataloging.content.path} component={AppRoutes.Cataloging.content.component}>
-          <Route path={AppRoutes.Cataloging.content.children[0].content.path} component={AppRoutes.Cataloging.content.children[0].content.component}/>
-          <Route path={AppRoutes.Cataloging.content.children[1].content.path} component={AppRoutes.Cataloging.content.children[1].content.component}/>
+          <Route path={AppRoutes.Cataloging.content.children[0].content.path} component={AppRoutes.Cataloging.content.children[0].content.component} />
+          <Route path={AppRoutes.Cataloging.content.children[1].content.path} component={AppRoutes.Cataloging.content.children[1].content.component} />
         </Route>
       </Route>
     </Router>
@@ -35,7 +35,7 @@ new Api().init(GDS_API, () => {
     <AppContainer>
       <Provider store={store}>
         <MuiThemeProvider>
-          <Routes root={App}/>
+          <Routes root={App} />
         </MuiThemeProvider>
       </Provider>
     </AppContainer>,
@@ -48,7 +48,7 @@ new Api().init(GDS_API, () => {
         <AppContainer>
           <Provider store={store}>
             <MuiThemeProvider>
-              <Routes root={App}/>
+              <Routes root={App} />
             </MuiThemeProvider>
           </Provider>
         </AppContainer>,

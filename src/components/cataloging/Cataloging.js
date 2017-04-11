@@ -7,6 +7,7 @@ import styles from './cataloging.cssmodule.scss';
 class Cataloging extends React.Component {
     render() {
         return (<div className="cataloging-component" styleName="cataloging-component">
+            {this.props.children}
         </div>)
     }
 }

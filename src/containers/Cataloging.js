@@ -26,8 +26,8 @@ import { connect } from 'react-redux';
 /* Populated by react-webpack-redux:reducer */
 class App extends Component {
     render() {
-        const { actions, Drawer, ApiService, Router, NewEntry, form } = this.props;
-        return <Main actions={actions} Drawer={Drawer} ApiService={ApiService} Router={Router} NewEntry={NewEntry} form={form}/>;
+        const { actions, Drawer, ApiService, NewEntry, form, route, children } = this.props;
+        return <Main actions={actions} Drawer={Drawer} ApiService={ApiService} NewEntry={NewEntry} form={form} route={route} children={children} />;
     }
 }
 /* Populated by react-webpack-redux:reducer
