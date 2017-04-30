@@ -5,6 +5,9 @@ import ApiRemove from '../actions/api/ApiRemove.js';
 import ApiSave from '../actions/api/ApiSave.js';
 import DrawerToggle from '../actions/drawer/DrawerToggle.js';
 import { push as RouterPush } from 'react-router-redux';
+import ViewFilterGrid from './view-filter/ViewFilterGrid';
+import ViewFilterList from './view-filter/ViewFilterList';
+import ViewFilterTable from './view-filter/ViewFilterTable';
 
 const actions = {
   ApiClear,
@@ -13,6 +16,9 @@ const actions = {
   ApiRemove,
   ApiSave,
   DrawerToggle,
-  RouterPush
+  RouterPush,
+  ViewFilterList,
+  ViewFilterTable,
+  ViewFilterGrid
 };
 module.exports = actions;

@@ -13,6 +13,9 @@ import {
   ApiSave,
   DrawerToggle,
   RouterPush,
+  ViewFilterGrid,
+  ViewFilterList,
+  ViewFilterTable,
 } from '../actions/';
 import React, {
   Component,
@@ -26,8 +29,7 @@ import { connect } from 'react-redux';
 /* Populated by react-webpack-redux:reducer */
 class App extends Component {
   render() {
-    const { actions, Drawer, ApiService, route, NewEntry, form, children } = this.props;
-    return <Main actions={actions} Drawer={Drawer} ApiService={ApiService} NewEntry={NewEntry} form={form} route={route} children={children} />;
+    return <Main {...this.props} />;
   }
 }
 /* Populated by react-webpack-redux:reducer
@@ -43,13 +45,17 @@ App.propTypes = {
     ApiRemove: PropTypes.func.isRequired,
     ApiSave: PropTypes.func.isRequired,
     DrawerToggle: PropTypes.func.isRequired,
-    RouterPush: PropTypes.func.isRequired
+    RouterPush: PropTypes.func.isRequired,
+    ViewFilterList: PropTypes.func.isRequired,
+    ViewFilterTable: PropTypes.func.isRequired,
+    ViewFilterGrid: PropTypes.func.isRequired
   }),
   Drawer: PropTypes.shape({}),
   ApiService: PropTypes.shape({}),
   routing: PropTypes.shape({}),
   NewEntry: PropTypes.shape({}),
-  form: PropTypes.shape({})
+  form: PropTypes.shape({}),
+  ViewFilter: PropTypes.shape({})
 };
 function mapStateToProps(state) {
   // eslint-disable-line no-unused-vars
@@ -59,7 +65,8 @@ function mapStateToProps(state) {
     ApiService: state.ApiService,
     routing: state.routing,
     NewEntry: state.NewEntry,
-    form: state.form
+    form: state.form,
+    ViewFilter: state.ViewFilter
   };
   return props;
 }
@@ -72,7 +79,10 @@ function mapDispatchToProps(dispatch) {
     ApiRemove,
     ApiSave,
     DrawerToggle,
-    RouterPush
+    RouterPush,
+    ViewFilterList,
+    ViewFilterTable,
+    ViewFilterGrid
   };
   const actionMap = { actions: bindActionCreators(actions, dispatch) };
   return actionMap;

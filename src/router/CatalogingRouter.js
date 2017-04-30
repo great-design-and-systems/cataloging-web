@@ -1,7 +1,6 @@
+import { BooksBody } from '../components/cataloging/books/route';
 import Cataloging from '../containers/Cataloging';
 import FA from 'react-fontawesome';
-import NewEntry from '../components/cataloging/new-entry/NewEntry';
-import OnlineSearch from '../components/cataloging/online-search/OnlineSearch';
 import React from 'react';
 
 const Router = {
@@ -13,21 +12,12 @@ const Router = {
         component: Cataloging,
         children: [
             {
-                id: 'newEntry',
+                id: 'books',
                 content: {
-                    path: 'new-entry',
-                    icon: <FA name="file" />,
-                    label: 'New entry',
-                    component: NewEntry
-                }
-            },
-            {
-                id: 'onlineSearch',
-                content: {
-                    path: 'online-search',
+                    path: 'books',
                     icon: <FA name="book" />,
-                    label: 'Online Search',
-                    component: OnlineSearch
+                    label: 'Books',
+                    component: BooksBody
                 }
             }]
     }

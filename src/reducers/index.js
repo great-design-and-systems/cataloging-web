@@ -12,16 +12,18 @@
 import ApiService from './ApiService';
 import Drawer from './Drawer';
 import NewEntry from './NewEntry';
+import ViewFilter from './ViewFilter';
 import { combineReducers } from 'redux';
 import { reducer as form } from 'redux-form'
-import {routerReducer as routing} from 'react-router-redux';
+import { routerReducer as routing } from 'react-router-redux';
 
 const reducers = {
   Drawer,
   ApiService,
   routing,
   NewEntry,
-  form
+  form,
+  ViewFilter
 };
 const combined = combineReducers(reducers);
 export default combined;
