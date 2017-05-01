@@ -1,14 +1,13 @@
-import FloatingActionButton from 'material-ui/FloatingActionButton';
-import FontIcon from 'material-ui/FontIcon';
+import Control from './Control';
 import React from 'react';
 
 export default class Add extends React.Component {
-    render() {
-        const style = {
-            marginRight: 8
+    onClick() {
+        if (this.props.HeadersControls.add.action) {
+            this.props.HeadersControls.add.action();
         }
-        return (<FloatingActionButton mini={true} style={style} secondary={true}>
-            < FontIcon className="fa fa-plus fa-fw fa-lg" />
-        </FloatingActionButton >)
+    }
+    render() {
+        return (<Control onClick={this.onClick.bind(this)} {...this.props.HeadersControls.add} fontIcon="fa fa-plus fa-fw fa-lg" />)
     }
 }

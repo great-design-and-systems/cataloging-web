@@ -1,14 +1,8 @@
-import FloatingActionButton from 'material-ui/FloatingActionButton';
-import FontIcon from 'material-ui/FontIcon';
+import Control from './Control';
 import React from 'react';
 
 export default class User extends React.Component {
     render() {
-        const style = {
-            marginRight: 8
-        }
-        return (<FloatingActionButton mini={true} style={style} secondary={true}>
-            <FontIcon className="fa fa-user fa-fw fa-lg" />
-        </FloatingActionButton>);
+        return (<Control {...this.props.HeadersControls.user} fontIcon="fa fa-user fa-fw fa-lg" />)
     }
 }

@@ -32,9 +32,16 @@ export default class ViewFilterTab extends React.Component {
     }
     render() {
         return (<Tabs onChange={this.onChange.bind(this)}>
-            <Tab value="grid-tab" icon={<FA name="th" />} label="Grid" />
-            <Tab value="table-tab" icon={<FA name="table" />} label="Table" />
-            <Tab value="list-tab" icon={<FA name="list" />} label="List" />
+            {this.props.gridTabComponent ? <Tab value="grid-tab" icon={<FA name="th" />} label="Grid">
+                {this.props.gridTabComponent}
+            </Tab> : ''}
+            {this.props.tableTabComponent ? <Tab value="table-tab" icon={<FA name="table" />} label="Table">
+                {this.props.tableTabComponent}
+            </Tab> : ''}
+            {this.props.listTabComponent ? <Tab value="list-tab" icon={<FA name="list" />} label="List" >
+                {this.props.listTabComponent}
+            </Tab> : ''}
+
         </Tabs>)
     }
 }

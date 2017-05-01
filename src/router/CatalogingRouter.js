@@ -1,4 +1,4 @@
-import { BooksBody } from '../components/cataloging/books/route';
+import Books from '../containers/Books';
 import Cataloging from '../containers/Cataloging';
 import FA from 'react-fontawesome';
 import React from 'react';
@@ -17,7 +17,7 @@ const Router = {
                     path: 'books',
                     icon: <FA name="book" />,
                     label: 'Books',
-                    component: BooksBody
+                    component: Books
                 }
             }]
     }

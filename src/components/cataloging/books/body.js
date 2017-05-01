@@ -1,11 +1,10 @@
 import React from 'react';
+import ViewFilterTab from '../../common/ViewFilterTab';
 
 export default class Body extends React.Component {
-    componentWillMount() {
-        console.log('books body', this.props);
-    }
     render() {
         return (<div>
+            <ViewFilterTab {...this.props} />
         </div>);
     }
 }
