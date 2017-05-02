@@ -1,12 +1,18 @@
-export function getActionData(api, domain, action, evaluate) {
-    let actionDomain = api[domain] ? api[domain][action] : undefined;
-    let data;
-    if (actionDomain) {
-        if (evaluate) {
-            data = eval('actionDomain.' + evaluate);
-        } else {
-            data = actionDomain;
+export default class ApiData {
+    getActionData(api, domain, action, evaluate) {
+        let data;
+        try {
+            let actionDomain = api[domain] ? api[domain][action] : undefined;
+            if (actionDomain) {
+                if (evaluate) {
+                    data = eval('actionDomain.' + evaluate);
+                } else {
+                    data = actionDomain;
+                }
+            }
+        } catch (err) {
+            console.warn(err);
         }
+        return data;
     }
-    return data;
 }
